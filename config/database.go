@@ -13,8 +13,9 @@ func ConnectDB () {
 	db, err := sql.Open("mysql", "root:@/go_products")
 	if err != nil {
 	panic(err)
+	}
+
+	DB = db
 
 	log.Println("Database Connected")
-	DB = db
-}
 }
