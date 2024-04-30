@@ -5,7 +5,7 @@ import (
 	"crud-go/entities"
 )
 
-func GetAll () []entities.Category {
+func GetAll() []entities.Category {
 	rows, err := config.DB.Query(`SELECT * FROM categories`)
 	if err != nil {
 		panic(err)
@@ -45,4 +45,15 @@ func Create(category entities.Category) bool {
 	}
 
 	return lastInsertId > 0
+}
+
+func Detail(id int) entities.Category {
+	row := config.DB.QueryRow(`SELECT id, name FROM categories WHERE id = ?`, id)
+
+	var category entities.Category
+	if err := row.Scan(&category.Id, &category.Name); err != nil {
+		panic(err.Error())
+	}
+	
+	return category
 }
