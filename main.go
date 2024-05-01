@@ -4,6 +4,7 @@ import (
 	"crud-go/config"
 	"crud-go/controllers/categorycontroller"
 	"crud-go/controllers/homecontroller"
+	"crud-go/controllers/productcontroller"
 	"log"
 	"net/http"
 )
@@ -19,6 +20,9 @@ func main () {
 	http.HandleFunc("/categories/add", categorycontroller.Add)
 	http.HandleFunc("/categories/edit", categorycontroller.Edit)
 	http.HandleFunc("/categories/delete", categorycontroller.Delete)
+
+	//Products Page
+	http.HandleFunc("/products", productcontroller.Index)
 
 
 	log.Println("Server running on port: 8080")
