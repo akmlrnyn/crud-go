@@ -23,6 +23,7 @@ func main () {
 
 	//Products Page
 	http.HandleFunc("/products", productcontroller.Index)
+	http.HandleFunc("/products/add", productcontroller.Add)
 
 
 	log.Println("Server running on port: 8080")
